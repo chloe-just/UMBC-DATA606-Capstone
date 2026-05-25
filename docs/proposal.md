@@ -40,10 +40,10 @@ Provide the background information about the chosen topic.
 
 Describe the datasets you are using to answer your research questions.
 
-- Data source: https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
-- Data size: 1524b kb
-- Data shape: 12 columns, 1127 rows
-- Time period (for example, 2010 to 2020) if your data are time-bound
+- Data Source: https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
+- Data Size: 1524KB
+- Data Shape: 12 columns, 1127 rows
+- Time Period: Unknown
 - **What does each row represent?**
     - Each row represents one book in the Goodreads dataset.
     - A single record includes metadata about that book, such as its title, author, average rating, and other bibliographic information.
@@ -86,7 +86,7 @@ The recommendation system works by:
 
 ### Optional Target Variable (Alternative Supervised Approach)
 
-If the project is reframed as a predictive modeling task, the following column could be used as a target variable:
+If my project is reframed as a predictive modeling task, the following column could be used as a target variable:
 
 - **average_rating**  
   Represents the mean user rating for each book (range: 0.0 – 5.0)
@@ -112,7 +112,7 @@ Example classification setup:
 
 For this project, the goal is to build a content-based book recommendation system. Instead of predicting a single target label, the model learns relationships between books using their metadata and textual features.
 
-### Primary Features (Text-Based - Most Important)
+### Primary Features
 
 These features are used to generate similarity between books using NLP techniques such as TF-IDF:
 
