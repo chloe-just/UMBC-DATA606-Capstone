@@ -20,14 +20,14 @@
 Provide the background information about the chosen topic. 
 
 - What is it about?
-  -This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests. The project will primarily focus on fantasy and indie books, allowing readers to discover titles that match their reading preferences.
-  -The recommendation engine will use content-based filtering techniques, including TF-IDF vectorization and cosine similarity, to measure similarities between books and generate recommendations. A web application developed with Streamlit will allow users to interact with the trained model by entering a book title and receiving personalized recommendations.
+  - This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests. The project will primarily focus on fantasy and indie books, allowing readers to discover titles that match their reading preferences.
+  - The recommendation engine will use content-based filtering techniques, including TF-IDF vectorization and cosine similarity, to measure similarities between books and generate recommendations. A web application developed with Streamlit will allow users to interact with the trained model by entering a book title and receiving personalized recommendations.
 
 
 - Why does it matter?
-  -Recommendation systems are widely used across industries, including entertainment, e-commerce, and social media platforms, to improve user experience and increase engagement. In the publishing industry, recommendation systems help readers discover books they may not have otherwise found, especially lesser-known indie titles that often receive less visibility than traditionally published books.
-  -With the growing popularity of online reading communities such as Goodreads, BookTok, and Bookstagram, readers are exposed to an overwhelming number of book options. A recommendation system can simplify the discovery process by suggesting books that align with a reader’s interests and reading habits.
-  -This project also demonstrates the practical applications of machine learning and NLP techniques in solving real-world problems involving large amounts of textual data. Additionally, focusing on indie and fantasy books creates an opportunity to highlight books that may be underrepresented in traditional recommendation systems.
+  - Recommendation systems are widely used across industries, including entertainment, e-commerce, and social media platforms, to improve user experience and increase engagement. In the publishing industry, recommendation systems help readers discover books they may not have otherwise found, especially lesser-known indie titles that often receive less visibility than traditionally published books.
+  - With the growing popularity of online reading communities such as Goodreads, BookTok, and Bookstagram, readers are exposed to an overwhelming number of book options. A recommendation system can simplify the discovery process by suggesting books that align with a reader’s interests and reading habits.
+  - This project also demonstrates the practical applications of machine learning and NLP techniques in solving real-world problems involving large amounts of textual data. Additionally, focusing on indie and fantasy books creates an opportunity to highlight books that may be underrepresented in traditional recommendation systems.
 
   
 - What are your research questions?
@@ -40,18 +40,136 @@ Provide the background information about the chosen topic.
 
 Describe the datasets you are using to answer your research questions.
 
-- Data sources
-- Data size (MB, GB, etc.)
-- Data shape (# of rows and # columns)
+- Data source: https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks
+- Data size: 1524b kb
+- Data shape: 12 columns, 1127 rows
 - Time period (for example, 2010 to 2020) if your data are time-bound
-- **What does each row represent?(a patient, a school, a crime, etc.)**
-- Data dictionary
-  - Columns name
-  - Data type
-  - Defition
-  - Potential values (for categorical valuables, what are the categories?)
-- Which variable/column will be your target/label in your ML model?
-- Which variables/columns may be selected as features/predictors for your ML models?
+- **What does each row represent?**
+    - Each row represents one book in the Goodreads dataset.
+    - A single record includes metadata about that book, such as its title, author, average rating, and other bibliographic information.
+
+## Data Dictionary
+
+| Column Name | Data Type | Definition | Potential Values |
+|-------------|-----------|------------|-------------------|
+| bookID | Integer | Unique identifier for each book | Positive integers |
+| title | String | Title of the book | Any book title (text) |
+| authors | String | Author(s) of the book | Names of authors (e.g., J.K. Rowling) |
+| average_rating | Float | Mean user rating on Goodreads | 0.0 – 5.0 |
+| isbn | String | ISBN-10 identifier | Numeric string or missing |
+| isbn13 | String | ISBN-13 identifier | Numeric string or missing |
+| language_code | Categorical (String) | Language of the book | eng, en-US, spa, fre, etc. |
+| num_pages | Integer | Number of pages in the book | Positive integers |
+| ratings_count | Integer | Total number of ratings | 0 – large integers |
+| text_reviews_count | Integer | Number of written reviews | 0 – large integers |
+| publication_date | String/Date | Date the book was published | Date format (e.g., 10/1/2008) |
+| publisher | String | Publishing company | Penguin, HarperCollins, etc. |
+
+## Target / Label Variable
+
+This project focuses on building a **content-based book recommendation system**, which means it does not rely on a traditional supervised learning target variable (such as a class label or numeric value to predict).
+
+Instead, the system learns patterns of similarity between books using their features (metadata and text). Therefore, the model is considered an **unsupervised learning approach**.
+
+---
+
+### Primary Approach (No Explicit Target Variable)
+
+There is **no single target or label column** in this dataset because the goal is not to predict an outcome, but to measure similarity between books.
+
+The recommendation system works by:
+- Transforming book features into numerical vectors using TF-IDF
+- Computing similarity between books using cosine similarity
+- Returning the most similar books as recommendations
+
+---
+
+### Optional Target Variable (Alternative Supervised Approach)
+
+If the project is reframed as a predictive modeling task, the following column could be used as a target variable:
+
+- **average_rating**  
+  Represents the mean user rating for each book (range: 0.0 – 5.0)
+
+This allows for alternative modeling approaches such as:
+- Regression (predicting rating value)
+- Classification (e.g., high rating vs low rating)
+
+Example classification setup:
+- High-rated book: average_rating ≥ 4.0  
+- Low-rated book: average_rating < 4.0  
+
+---
+
+### Summary
+
+- **Primary project type:** Unsupervised learning (recommendation system)  
+- **No explicit target variable is required**  
+- **Core objective:** Measure similarity between books based on features  
+- **Optional target (for extension):** `average_rating`
+
+## Features / Predictors for the Machine Learning Model
+
+For this project, the goal is to build a content-based book recommendation system. Instead of predicting a single target label, the model learns relationships between books using their metadata and textual features.
+
+### Primary Features (Text-Based - Most Important)
+
+These features are used to generate similarity between books using NLP techniques such as TF-IDF:
+
+- **title**  
+  The name of the book. Helps identify similar or related titles.
+
+- **authors**  
+  Author(s) of the book. Books by the same author or similar authors may be recommended together.
+
+- **combined text representation (engineered feature)**  
+  A combined field created from:
+  - title  
+  - authors  
+  - publisher  
+  - language_code  
+
+  This is the main input for TF-IDF vectorization.
+
+---
+
+### Categorical Features
+
+These features can be used for filtering or improving recommendation relevance:
+
+- **language_code**  
+  Language the book is written in (e.g., eng, en-US, fre, spa).
+
+- **publisher**  
+  Publishing company (e.g., Penguin Books, HarperCollins).
+
+---
+
+### Numerical Features (Optional / Enhancements)
+
+These features are not required for basic recommendation but can be used for ranking or hybrid recommendation systems:
+
+- **average_rating**  
+  Mean user rating (0.0 – 5.0). Can help prioritize higher-rated books.
+
+- **ratings_count**  
+  Number of ratings received. Indicates popularity.
+
+- **text_reviews_count**  
+  Number of written reviews. Can indicate engagement level.
+
+- **num_pages**  
+  Length of the book. Can be used to match reading preferences.
+
+---
+
+### Feature Engineering Summary
+
+To support the recommendation system, a combined feature will be created:
+
+- **combined_features = title + authors + publisher + language_code**
+
+This combined text is transformed into numerical vectors using **TF-IDF vectorization**, and similarity between books is computed using **cosine similarity**.
 
 ## 4. Exploratory Data Analysis (EDA)
 
