@@ -20,15 +20,16 @@
 Provide the background information about the chosen topic. 
 
 - What is it about?
-  This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests. The project will primarily focus on fantasy and indie books, allowing readers to discover titles that match their reading preferences.
+  -This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests. The project will primarily focus on fantasy and indie books, allowing readers to discover titles that match their reading preferences.
+  -The recommendation engine will use content-based filtering techniques, including TF-IDF vectorization and cosine similarity, to measure similarities between books and generate recommendations. A web application developed with Streamlit will allow users to interact with the trained model by entering a book title and receiving personalized recommendations.
 
-The recommendation engine will use content-based filtering techniques, including TF-IDF vectorization and cosine similarity, to measure similarities between books and generate recommendations. A web application developed with Streamlit will allow users to interact with the trained model by entering a book title and receiving personalized recommendations.
+
 - Why does it matter?
-  Recommendation systems are widely used across industries, including entertainment, e-commerce, and social media platforms, to improve user experience and increase engagement. In the publishing industry, recommendation systems help readers discover books they may not have otherwise found, especially lesser-known indie titles that often receive less visibility than traditionally published books.
+  -Recommendation systems are widely used across industries, including entertainment, e-commerce, and social media platforms, to improve user experience and increase engagement. In the publishing industry, recommendation systems help readers discover books they may not have otherwise found, especially lesser-known indie titles that often receive less visibility than traditionally published books.
+  -With the growing popularity of online reading communities such as Goodreads, BookTok, and Bookstagram, readers are exposed to an overwhelming number of book options. A recommendation system can simplify the discovery process by suggesting books that align with a reader’s interests and reading habits.
+  -This project also demonstrates the practical applications of machine learning and NLP techniques in solving real-world problems involving large amounts of textual data. Additionally, focusing on indie and fantasy books creates an opportunity to highlight books that may be underrepresented in traditional recommendation systems.
 
-With the growing popularity of online reading communities such as Goodreads, BookTok, and Bookstagram, readers are exposed to an overwhelming number of book options. A recommendation system can simplify the discovery process by suggesting books that align with a reader’s interests and reading habits.
-
-This project also demonstrates the practical applications of machine learning and NLP techniques in solving real-world problems involving large amounts of textual data. Additionally, focusing on indie and fantasy books creates an opportunity to highlight books that may be underrepresented in traditional recommendation systems.
+  
 - What are your research questions?
   1. Can natural language processing techniques effectively recommend books based on textual similarity?
   2. How accurately can a content-based recommendation system identify books that are similar in genre, themes, and descriptions?
