@@ -9,7 +9,7 @@
 
 - Project Title: A Personalized Book Recommendation System Using Machine Learning and NLP
 - Prepared for UMBC Data Science Master Degree Capstone by Dr Chaojie (Jay) Wang
-- Chloe Just 
+- Author: Chloe Just 
 - GitHub: https://github.com/chloe-just/UMBC-DATA606-Capstone/tree/main
 - LinkedIn: https://www.linkedin.com/in/chloe-just-510377124/
 - Link to your PowerPoint presentation file
@@ -20,7 +20,7 @@
 Provide the background information about the chosen topic. 
 
 - What is it about?
-  - This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests. The project will primarily focus on fantasy and indie books, allowing readers to discover titles that match their reading preferences.
+  - This project focuses on building a personalized book recommendation system using machine learning and natural language processing (NLP). The system will analyze book metadata and textual information, such as book descriptions, genres, and reader ratings, to recommend similar books to users based on their interests.
   - The recommendation engine will use content-based filtering techniques, including TF-IDF vectorization and cosine similarity, to measure similarities between books and generate recommendations. A web application developed with Streamlit will allow users to interact with the trained model by entering a book title and receiving personalized recommendations.
 
 
