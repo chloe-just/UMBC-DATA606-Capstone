@@ -125,7 +125,7 @@ This variable represents the rating a user gives to a book and is used to learn 
 
 ---
 
-# Which variables/columns may be selected as features/predictors for your ML models?
+## Which variables/columns may be selected as features/predictors for your ML models?
 
 ## Primary Features
 
@@ -188,7 +188,7 @@ These features are optional and may be used for exploratory analysis or future p
 
 ---
 
-# Which variable/column will be your target/label in your ML model?
+## Which variable/column will be your target/label in your ML model?
 
 This project primarily uses a **recommendation system approach**, which differs from traditional supervised machine learning models.
 
@@ -209,7 +209,7 @@ This variable will be used to:
 
 ---
 
-# Planned Machine Learning Approach
+## Planned Machine Learning Approach
 
 The recommendation system will primarily use:
 
