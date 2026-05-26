@@ -63,15 +63,15 @@ Approximately 1.1 million rows
 
 - Time Period: Collected in a 4-week crawl (August / September 2004)
 - **What does each row represent?**
-    - Books.csv
+  - Books.csv
 
     Each row represents one unique book.
 
-    - Users.csv
+  - Users.csv
 
     Each row represents one unique user.
 
-    - Ratings.csv
+   - Ratings.csv
 
     Each row represents one user rating for a specific book.
 
