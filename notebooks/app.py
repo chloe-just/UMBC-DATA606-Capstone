@@ -17,8 +17,9 @@ st.markdown("Select a book you enjoyed, and we will recommend similar books base
 @st.cache_data
 def load_and_prep_data():
     # Load raw data
-    books = pd.read_csv("Books.csv", encoding="latin-1", low_memory=False)
-    ratings = pd.read_csv("Ratings.csv", encoding="latin-1")
+books = pd.read_csv("../data/books.zip", encoding="latin-1", low_memory=False)
+    ratings = pd.read_csv("../data/ratings.zip", encoding="latin-1")
+    users = pd.read_csv("../data/users.zip", encoding="latin-1")
 
     # Merge datasets on ISBN
     df = ratings.merge(books, on="ISBN")
