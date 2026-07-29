@@ -5,7 +5,7 @@
 - Author: Chloe Just 
 - GitHub: https://github.com/chloe-just/UMBC-DATA606-Capstone/tree/main
 - LinkedIn: https://www.linkedin.com/in/chloe-just-510377124/
-- Link to your PowerPoint presentation file
+- PowerPoint Presentation: https://docs.google.com/presentation/d/1SfwVZcUDI0_VDJQ_lJzIFp1zLH_lgLNuFD73ie3owRM/edit?usp=sharing
 - Link to your YouTube video 
     
 ## 2. Background
