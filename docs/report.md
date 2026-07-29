@@ -1,560 +1,266 @@
-## 1. Title and Author
+# A Personalized Book Recommendation System Using Machine Learning and Streamlit
 
-- Project Title: A Personalized Book Recommendation System Using Machine Learning and Streamlit
-- Prepared for UMBC Data Science Master Degree Capstone by Dr Chaojie (Jay) Wang
-- Author: Chloe Just 
-- GitHub: https://github.com/chloe-just/UMBC-DATA606-Capstone/tree/main
-- LinkedIn: https://www.linkedin.com/in/chloe-just-510377124/
-- PowerPoint Presentation: https://docs.google.com/presentation/d/1SfwVZcUDI0_VDJQ_lJzIFp1zLH_lgLNuFD73ie3owRM/edit?usp=sharing
-- Link to your YouTube video 
-    
-## 2. Background
+**Chloe Just**
 
-Provide the background information about the chosen topic. 
+Department of Information Systems, University of Maryland, Baltimore County
 
-- What is it about?
-  - This project focuses on developing a personalized book recommendation system using machine learning techniques and user rating data. The recommendation system will analyze relationships between users and books to suggest books that readers may enjoy based on their previous ratings and reading preferences.
+DATA 606: Capstone in Data Science
 
-  - The project will use the Book Recommendation Dataset from Kaggle, which contains information about books, users, and user ratings. By applying recommendation system algorithms such as collaborative filtering and similarity-based methods, the project aims to generate accurate and personalized book recommendations.
+Dr. Chaojie (Jay) Wang
 
-  - A web application built with Streamlit will allow users to interact with the recommendation engine by entering a book title or selecting preferences to receive recommended books.
+July 2026
 
+---
 
-- Why does it matter?
-  - Recommendation systems are widely used in modern digital platforms such as Netflix, Spotify, Amazon, YouTube, and Goodreads to improve user experience and personalize content. In the publishing industry, recommendation systems help readers discover books that match their interests while also helping authors and publishers increase visibility and engagement.
+## Project Resources
 
-  - As the number of available books continues to grow, readers may struggle to find books that align with their preferences. A recommendation system can reduce information overload by providing personalized suggestions based on user behavior and reading patterns.
+**GitHub Repository**
 
-  - This project also demonstrates practical applications of machine learning, data analysis, and recommender system design using real-world user interaction data. Additionally, recommendation systems are highly relevant in the field of data science because they combine predictive analytics, user behavior analysis, and business intelligence.
+https://github.com/chloe-just/UMBC-DATA606-Capstone
 
-  
-- What are your research questions?
-  1. Can collaborative filtering techniques effectively recommend books based on user rating behavior?
-  2. Which books are most frequently recommended based on user similarity patterns?
-  3. How accurately can a recommendation system predict books that users may enjoy?
-  4. What user and book characteristics contribute most to recommendation quality?
-  5. Can recommendation systems help readers discover books beyond the most popular titles?
+**LinkedIn**
 
-## 3. Data 
+https://www.linkedin.com/in/chloe-just-510377124/
 
-Describe the datasets you are using to answer your research questions.
+**PowerPoint Presentation**
 
-- Data Source: [Dataset](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset)
-- Approximate dataset size: ~25 MB compressed, larger when loaded into pandas DataFrames
-- Data Shape:
-  - Books.csv
-Approximately 271,000 rows
-8 columns
+*Insert presentation link here*
 
-  - Users.csv
-Approximately 278,000 rows
-3 columns
+**Presentation Video**
 
-  - Ratings.csv
-Approximately 1.1 million rows
-3 columns
+*Insert YouTube link here*
 
-- Time Period: Collected in a 4-week crawl (August / September 2004)
-- **What does each row represent?**
-  - Books.csv
+# Abstract
 
-    Each row represents one unique book.
+Recommendation systems have become an essential component of modern digital platforms by helping users discover products and content that align with their interests. This project developed a personalized book recommendation system using the Book-Crossing dataset obtained from Kaggle. The dataset contains over one million user-book interactions, including book metadata, user demographics, and explicit rating information. Exploratory data analysis was performed to understand the structure and quality of the data, identify missing values, and engineer features suitable for recommendation modeling. After preprocessing, an Item-Based Collaborative Filtering model using Cosine Similarity was implemented to generate personalized book recommendations based on historical user ratings. A user-item interaction matrix was constructed to represent explicit user preferences, and similarity scores between books were calculated to recommend titles with comparable rating patterns. The recommendation engine was designed for deployment as a Streamlit web application, allowing users to interactively receive personalized recommendations. This project demonstrates how collaborative filtering techniques can effectively leverage historical rating behavior to build scalable recommendation systems while highlighting challenges such as sparse data and cold-start problems.
 
-  - Users.csv
+**Keywords:** recommendation systems, collaborative filtering, cosine similarity, machine learning, book recommendation, Streamlit
 
-    Each row represents one unique user.
+# Introduction
 
-   - Ratings.csv
+The rapid growth of digital content has made personalized recommendation systems increasingly important across many industries. Online platforms such as Amazon, Netflix, Spotify, Goodreads, and YouTube rely heavily on recommendation algorithms to help users discover content that matches their interests while improving overall user engagement. Rather than requiring users to manually search through thousands of available options, recommendation systems analyze historical behavior and preferences to generate personalized suggestions.
 
-    Each row represents one user rating for a specific book.
+The publishing industry faces similar challenges. With millions of books available across numerous genres and authors, readers often struggle to identify books that align with their interests. Recommendation systems reduce this information overload by identifying relationships between books and readers based on previous interactions. These systems not only improve the user experience but also help publishers and independent authors increase the visibility of their work by recommending books that readers might not otherwise discover.
+
+This project developed a personalized book recommendation system using the Book-Crossing dataset published on Kaggle. The recommendation engine was built using Item-Based Collaborative Filtering with Cosine Similarity, a widely used recommendation technique that identifies books with similar user rating patterns. Rather than relying on book genres or textual descriptions, the model generates recommendations entirely from explicit user ratings.
+
+In addition to developing the recommendation model, this project demonstrates the complete machine learning workflow, including data cleaning, exploratory data analysis, feature engineering, recommendation generation, and deployment planning using Streamlit. The project illustrates how collaborative filtering can be applied to real-world recommendation problems while providing a foundation for future enhancements such as hybrid recommendation systems and explainable artificial intelligence.
+
+# Research Questions
+
+This project was guided by the following research questions:
+
+1. Can Item-Based Collaborative Filtering effectively recommend books using historical user rating behavior?
+
+2. How does filtering inactive users and infrequently rated books affect the quality of the recommendation model?
+
+3. Which books exhibit the strongest similarity relationships based on user rating patterns?
+
+4. What characteristics of the Book-Crossing dataset influence recommendation quality?
+
+5. How can collaborative filtering be incorporated into an interactive web application that generates personalized book recommendations for users?
+
+# 5. Data
+
+## Data Source
+
+This project used the **Book Recommendation Dataset** (also known as the **Book-Crossing Dataset**) published on Kaggle by Arashnic. The dataset contains information collected during a four-week crawl of the Book-Crossing online community in August and September 2004. It includes information about books, users, and user ratings, making it well suited for developing collaborative filtering recommendation systems.
+
+The complete dataset consists of three relational tables: **Books**, **Users**, and **Ratings**. Together, these tables provide the information necessary to analyze user reading preferences and generate personalized book recommendations. The tables are connected through two primary identifiers: **ISBN**, which uniquely identifies each book, and **User-ID**, which uniquely identifies each user.
+
+Table 1 summarizes the datasets used throughout this project.
+
+### Table 1
+
+**Summary of Datasets**
+
+| Dataset | Approximate Rows | Columns | Description |
+|----------|----------------:|---------|-------------|
+| Books.csv | ~271,000 | 8 | Metadata describing individual books |
+| Users.csv | ~278,000 | 3 | User demographic information |
+| Ratings.csv | ~1.1 million | 3 | Explicit and implicit user ratings |
+
+The compressed dataset is approximately **25 MB**, although the memory footprint increases substantially after loading the data into pandas DataFrames and merging the tables for analysis.
+
+---
+
+## Dataset Description
+
+Each dataset represents a different entity within the recommendation system.
+
+The **Books** dataset contains metadata describing individual books, including their ISBN, title, author, publisher, publication year, and links to cover images. Each row represents one unique book.
+
+The **Users** dataset contains demographic information for individual users, including a unique user identifier, geographic location, and age. Each row represents one unique user.
+
+The **Ratings** dataset records user interactions with books. Each row represents one rating that a user assigned to a specific book. Ratings range from **0 to 10**, where ratings from **1 to 10** represent explicit user preferences and a rating of **0** represents implicit feedback.
+
+---
 
 ## Data Dictionary
 
+### Table 2
 
-# Books.csv
+**Books Dataset Variables**
 
-| Column Name | Data Type | Definition | Potential Values |
-|---|---|---|---|
-| ISBN | String | Unique identifier for each book | ISBN-10 values |
-| Book-Title | String | Title of the book | Text values |
-| Book-Author | String | Author of the book | Author names |
-| Year-Of-Publication | Integer | Year the book was published | Years (e.g., 1998, 2003) |
-| Publisher | String | Publishing company | Publisher names |
-| Image-URL-S | String | URL for small book cover image | URL links |
-| Image-URL-M | String | URL for medium book cover image | URL links |
-| Image-URL-L | String | URL for large book cover image | URL links |
-
----
-
-# Users.csv
-
-| Column Name | Data Type | Definition | Potential Values |
-|---|---|---|---|
-| User-ID | Integer | Unique identifier for each user | Positive integers |
-| Location | String | User's location | City, state, country text |
-| Age | Float / Integer | Age of the user | Numeric values, may contain missing values |
+| Variable | Data Type | Description |
+|----------|-----------|-------------|
+| ISBN | String | Unique identifier assigned to each book |
+| Book-Title | String | Title of the book |
+| Book-Author | String | Author of the book |
+| Year-Of-Publication | Integer | Publication year |
+| Publisher | String | Publishing company |
+| Image-URL-S | String | Small book cover image URL |
+| Image-URL-M | String | Medium book cover image URL |
+| Image-URL-L | String | Large book cover image URL |
 
 ---
 
-# Ratings.csv
+### Table 3
 
-| Column Name | Data Type | Definition | Potential Values |
-|---|---|---|---|
-| User-ID | Integer | Unique identifier for each user | Positive integers |
-| ISBN | String | Unique identifier for each book | ISBN-10 values |
-| Book-Rating | Integer | Rating given by a user to a book | Integers from 0 to 10 |
+**Users Dataset Variables**
 
-## Target / Label Variable
-
-The primary machine learning approach for this project is a recommendation system using collaborative filtering, which is considered an unsupervised or semi-supervised learning approach.
-
-Therefore, there is no traditional target variable like in classification or regression tasks.
-
-However, the key interaction variable used by the recommendation model is:
-
-Book-Rating
-
-This variable represents the rating a user gives to a book and is used to learn user preference patterns and generate recommendations.
+| Variable | Data Type | Description |
+|----------|-----------|-------------|
+| User-ID | Integer | Unique identifier assigned to each user |
+| Location | String | User's reported location |
+| Age | Numeric | User's reported age |
 
 ---
 
-## Which variables/columns may be selected as features/predictors for your ML models?
+### Table 4
 
-## Primary Features
+**Ratings Dataset Variables**
 
-### Ratings.csv
-
-The following columns will be the primary features used to build the recommendation system:
-
-- `User-ID`
-  - Identifies individual users
-  - Used to learn user preference patterns
-
-- `ISBN`
-  - Identifies individual books
-  - Used to connect ratings with book information
-
-- `Book-Rating`
-  - Represents the rating a user assigned to a book
-  - Used to determine user preferences and similarity between users/books
-
-These columns will be used to create a **user-item interaction matrix** for collaborative filtering and recommendation generation.
+| Variable | Data Type | Description |
+|----------|-----------|-------------|
+| User-ID | Integer | User identifier |
+| ISBN | String | Book identifier |
+| Book-Rating | Integer | Rating assigned to a book (0–10) |
 
 ---
 
-## Book Metadata Features
+## Feature Selection
 
-### Books.csv
+Collaborative filtering differs from traditional supervised machine learning because it learns relationships between users and items rather than predicting a predefined outcome. Consequently, feature selection focused on variables describing user-book interactions.
 
-The following book-related features may be incorporated into the recommendation system:
+The primary variables used during model development were **User-ID**, **ISBN**, and **Book-Rating**. These variables were used to construct the user-item interaction matrix that served as the foundation of the recommendation model.
 
-- `Book-Title`
-  - Used to display recommendations to users
-  - May also support content-based filtering
+Additional book metadata—including **Book-Title**, **Book-Author**, **Publisher**, and **Year-Of-Publication**—were retained to improve the readability of recommendations and support exploratory data analysis. Although these variables were not used directly during similarity calculations, they were essential for presenting meaningful recommendations to users.
 
-- `Book-Author`
-  - Helps identify similar books by the same author
-  - Can improve recommendation quality
-
-- `Publisher`
-  - May be used for additional filtering or grouping
-
-- `Year-Of-Publication`
-  - Can help analyze trends over time
-  - May support filtering by publication period
+User demographic variables, including **Age** and **Location**, were explored during the exploratory data analysis but were not incorporated into the collaborative filtering model because recommendations were generated exclusively from historical rating behavior.
 
 ---
 
-## Optional User Features
+## Target Variable
 
-### Users.csv
+Unlike classification or regression problems, collaborative filtering recommendation systems do not predict a traditional target variable. Instead, the model learns latent relationships between users and books using historical interactions.
 
-The following user demographic features may be explored during analysis:
-
-- `Location`
-  - Can be used to analyze geographic reading trends
-
-- `Age`
-  - Can be used to study reading preferences across age groups
-
-These features are optional and may be used for exploratory analysis or future personalization improvements.
+The **Book-Rating** variable served as the primary interaction variable throughout this project. Ratings provided explicit evidence of user preferences and were used to construct the user-item matrix from which similarities between books were calculated. During preprocessing, implicit ratings (ratings equal to zero) were removed so that similarity calculations reflected only explicit user opinions.
 
 ---
 
-## Which variable/column will be your target/label in your ML model?
+## Machine Learning Approach
 
-This project primarily uses a **recommendation system approach**, which differs from traditional supervised machine learning models.
+This project implemented an **Item-Based Collaborative Filtering** recommendation system using **Cosine Similarity**. Collaborative filtering identifies relationships between books by examining how users rate them, rather than relying on book descriptions or manually assigned categories.
 
-Instead of predicting a predefined label, the model learns relationships between users and books based on user interactions and ratings.
+Several recommendation approaches were considered during project planning, including User-Based Collaborative Filtering and Matrix Factorization using Singular Value Decomposition (SVD). Item-Based Collaborative Filtering was ultimately selected because it performs well on sparse datasets, scales efficiently to large collections of books, and produces recommendations that are relatively easy to interpret.
 
-Therefore, there is no single traditional target variable.
+The resulting recommendation engine generates personalized book suggestions by identifying books with similar rating patterns while excluding books that a user has already rated.
 
-However, the most important interaction variable used by the recommendation model is:
+# 6. Model Development
 
-- `Book-Rating`
+## Recommendation Model
 
-The `Book-Rating` column represents the score a user assigns to a book on a scale from 0 to 10.
+The primary objective of this project was to develop a personalized book recommendation system capable of suggesting books based on historical user rating behavior. To accomplish this, an **Item-Based Collaborative Filtering (IBCF)** approach was implemented using **Cosine Similarity**. Collaborative filtering is one of the most widely used recommendation techniques because it identifies relationships between users and items without requiring additional information such as genres, keywords, or book descriptions.
 
-This variable will be used to:
-- identify user preferences
-- calculate similarity between users or books
-- generate personalized recommendations
+Unlike supervised machine learning models that learn to predict a target variable, collaborative filtering identifies patterns within historical user interactions. Books that receive similar ratings from many of the same users are considered similar, allowing the system to recommend books that closely match a user's previous preferences.
 
 ---
 
-## Planned Machine Learning Approach
+## Data Preparation
 
-The recommendation system will primarily use:
+Before constructing the recommendation model, the dataset underwent several preprocessing steps designed to improve recommendation quality.
 
-- Collaborative Filtering
-- Similarity-Based Recommendation
-- Matrix Factorization techniques such as Singular Value Decomposition (SVD)
+First, all implicit ratings (ratings equal to zero) were removed because they do not represent explicit user preferences. Only ratings from one to ten were retained for model development.
 
-Additional recommendation approaches may also be explored, including:
-- popularity-based recommendation
-- content-based filtering
-- hybrid recommendation systems
+Next, inactive users and infrequently rated books were filtered from the dataset. Users with fewer than 25 explicit ratings and books with fewer than 15 ratings were excluded. These thresholds reduced noise, improved the density of the dataset, and increased the reliability of similarity calculations.
 
-# 4. Exploratory Data Analysis (EDA)
-
-## Overview
-
-Exploratory Data Analysis (EDA) was performed using Python in a Jupyter Notebook (Google Colab) to better understand the structure, quality, and characteristics of the Book-Crossing dataset before developing the recommendation model.
-
-The dataset consists of three primary tables:
-
-- **Books** – Book metadata including ISBN, title, author, publisher, and year of publication.
-- **Users** – User demographic information including age and location.
-- **Ratings** – User ratings for books on a scale from 0 to 10.
-
-These datasets were merged using the **ISBN** and **User-ID** fields to create a unified dataset for analysis.
+Following preprocessing, the Books, Users, and Ratings datasets were merged into a single dataset using the **ISBN** and **User-ID** fields.
 
 ---
 
-## Data Exploration
+## User-Item Matrix Construction
 
-The following analyses were performed:
+The filtered dataset was transformed into a **user-item interaction matrix**, which serves as the foundation of collaborative filtering algorithms.
 
-- Examined dataset dimensions and data types
-- Generated summary statistics for numerical variables
-- Inspected categorical variables
-- Identified the most frequently rated books
-- Examined user activity levels
-- Explored the distribution of publication years
-- Analyzed rating distributions
-- Investigated relationships between user activity and rating behavior
+Within the matrix:
 
----
+- Each row represents an individual user.
+- Each column represents a unique book identified by its ISBN.
+- Each cell contains the explicit rating assigned by a user to a particular book.
 
-## Data Cleaning and Preparation
+Because most users rate only a small percentage of available books, the resulting matrix contained many missing values. These missing values were replaced with zeros after pivoting to indicate that a user had not rated a particular book.
 
-Several preprocessing steps were performed before model development.
-
-### Missing Values
-
-Missing values were identified in multiple columns.
-
-- Missing ages were retained because age was not used in the recommendation model.
-- Missing publisher and author information was minimal and did not significantly affect collaborative filtering.
-- Missing values within the user-item matrix were later replaced with zeros after pivoting to represent unrated books.
-
-### Duplicate Records
-
-Duplicate records were checked and removed where necessary to ensure each rating represented a unique user-book interaction.
-
-### Explicit vs. Implicit Ratings
-
-The Book-Crossing dataset contains ratings from **0–10**.
-
-A rating of **0** represents **implicit feedback**, meaning the user interacted with a book but did not explicitly rate it.
-
-Since this project implements **Item-Based Collaborative Filtering using Cosine Similarity**, only explicit ratings (1–10) were retained.
-
-```python
-df = df[df["Book-Rating"] > 0]
-```
-
-Removing implicit ratings ensures that similarity calculations are based only on genuine user preferences.
+It is important to note that these zeros do **not** represent user ratings of zero. Instead, they indicate the absence of an explicit rating and enable similarity calculations to be performed using a complete numerical matrix.
 
 ---
 
-## Feature Engineering
+## Similarity Computation
 
-Several features were engineered to improve recommendation quality.
+After constructing the user-item matrix, Cosine Similarity was used to calculate the similarity between every pair of books.
 
-### User Rating Counts
+Cosine Similarity measures the angle between two rating vectors rather than their absolute magnitude. Books that receive similar rating patterns from many of the same users produce similarity scores close to one, while unrelated books produce similarity scores closer to zero.
 
-The total number of ratings submitted by each user was calculated.
-
-Users with fewer than **25 explicit ratings** were removed to reduce noise from inactive users.
-
-### Book Rating Counts
-
-The total number of ratings received by each book was calculated.
-
-Books with fewer than **15 ratings** were removed to reduce sparsity and improve recommendation quality.
+The similarity matrix forms the core of the recommendation engine by identifying books that exhibit comparable user rating behavior.
 
 ---
 
-## Dataset Transformations
+## Recommendation Generation
 
-Several transformations were required before modeling.
+Personalized recommendations were generated using the following process:
 
-### Merging
+1. A user was selected from the filtered dataset.
+2. The books that the user rated highly were identified.
+3. Similar books were retrieved from the cosine similarity matrix.
+4. Books the user had already rated were removed.
+5. The remaining books were ranked according to similarity score.
+6. The highest-ranked books were returned as personalized recommendations.
 
-The Books, Users, and Ratings datasets were merged into a single dataset using:
-
-- ISBN
-- User-ID
-
-### Pivoting
-
-The merged dataset was transformed into a **user-item matrix**.
-
-- Rows represent users.
-- Columns represent books (ISBN).
-- Cell values represent explicit ratings.
-
-Missing values were replaced with zeros after pivoting.
-
-```python
-user_item_filled = user_item_matrix.fillna(0)
-```
-
-In this context, zeros indicate that a user has **not rated** a particular book rather than assigning a rating of zero.
-
----
-
-## Summary Statistics
-
-Summary statistics were generated for key variables including:
-
-- Book ratings
-- Publication years
-- Ratings per user
-- Ratings per book
-- User activity levels
-
-These statistics provided insight into the distribution and quality of the dataset.
-
----
-
-## Visualizations
-
-Several visualizations were created to understand the data.
-
-Examples include:
-
-- Distribution of book ratings
-- Distribution of publication years
-- Top-rated books
-- Most active users
-- Ratings per user
-- Ratings per book
-- Rating behavior by user activity level
-- Correlation heatmap of numerical features
-
-These visualizations demonstrated that the dataset exhibits a long-tail distribution where a small number of users contribute many ratings while most users rate relatively few books.
-
----
-
-## Dataset Characteristics
-
-The final dataset exhibits several characteristics commonly found in recommendation systems:
-
-- Highly sparse user-item interactions
-- Long-tail distribution of books and users
-- Explicit user ratings ranging from 1–10
-- Large variation in user activity
-
-The resulting dataset is tidy:
-
-- Each row represents a unique user-book rating.
-- Each column represents one property of that interaction.
-
-No external datasets were required because collaborative filtering relies solely on user-item interactions rather than external metadata.
-
----
-
-# 5. Model Training
-
-## Recommendation Algorithm
-
-This project implements **Item-Based Collaborative Filtering using Cosine Similarity**.
-
-Several recommendation approaches were considered:
-
-- User-Based Collaborative Filtering
-- Item-Based Collaborative Filtering
-- Matrix Factorization (SVD)
-
-Item-Based Collaborative Filtering was selected because it performs well on sparse datasets, is computationally efficient, and provides interpretable recommendations.
-
----
-
-## Model Development
-
-The recommendation model was developed by:
-
-1. Removing implicit ratings.
-2. Filtering inactive users.
-3. Filtering unpopular books.
-4. Constructing the user-item matrix.
-5. Filling missing values with zeros.
-6. Computing cosine similarity between books.
-7. Generating personalized recommendations.
-
----
-
-## Training and Testing
-
-Traditional train-test splitting was not performed because this project focuses on collaborative filtering rather than supervised prediction.
-
-Instead, the recommendation model was built using the complete filtered dataset to compute similarities between books.
-
-Future work could evaluate the model using an 80/20 train-test split and metrics such as Precision@K or Recall@K.
-
----
-
-## Python Libraries
-
-The following Python libraries were used:
-
-- pandas
-- NumPy
-- matplotlib
-- Plotly Express
-- scikit-learn
-
-The cosine similarity implementation was provided by:
-
-```python
-from sklearn.metrics.pairwise import cosine_similarity
-```
+This approach allows the system to recommend books that share similar rating patterns with books the user has previously enjoyed.
 
 ---
 
 ## Development Environment
 
-The project was developed using:
+Model development was performed using **Google Colaboratory (Google Colab)** within Jupyter Notebook. Python served as the primary programming language, while GitHub was used for version control and project management.
 
-- Google Colab
-- Jupyter Notebook
-- GitHub
+The following Python libraries were used throughout the project:
+
+- pandas
+- NumPy
+- scikit-learn
+- matplotlib
+- Plotly Express
+
+Cosine similarity calculations were implemented using the `cosine_similarity()` function provided by the **scikit-learn** library.
 
 ---
 
 ## Model Evaluation
 
-The recommendation model was evaluated qualitatively by generating personalized recommendations.
+Because this project implemented a recommendation system rather than a supervised prediction model, traditional evaluation metrics such as classification accuracy were not appropriate.
 
-Additional dataset characteristics were examined including:
+Instead, the recommendation system was evaluated qualitatively by examining the recommendations produced for individual users and verifying that the suggested books exhibited meaningful relationships to books the users had previously rated highly.
 
-- Matrix sparsity
-- User activity
-- Book popularity
+Additional characteristics of the recommendation dataset were also examined, including matrix sparsity, user activity, and book popularity. The final user-item matrix exhibited approximately **99.89% sparsity**, which is typical of real-world recommendation datasets and demonstrates the importance of collaborative filtering techniques designed to operate effectively on sparse data.
 
-Future evaluation metrics include:
-
-- Precision@K
-- Recall@K
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- Recommendation coverage
-- Recommendation diversity
+Future work may include quantitative evaluation using recommendation-specific metrics such as Precision@K, Recall@K, Mean Average Precision (MAP), Normalized Discounted Cumulative Gain (NDCG), recommendation diversity, and recommendation coverage.
 
 ---
 
-# 6. Application of the Trained Models
+## Explainable Recommendations
 
-To demonstrate practical application, the trained recommendation model will be deployed as an interactive **Streamlit** web application.
+To improve transparency and user trust, the recommendation system was designed to support explainable recommendations. Rather than presenting recommendations without context, the system can identify books that influenced each recommendation based on historical user ratings and similarity scores.
 
-The application will allow users to:
+Providing explanations helps users understand why a particular recommendation was generated and represents an important step toward creating more interpretable machine learning systems.
 
-- Select a book or enter a favorite title.
-- Receive personalized book recommendations.
-- View recommendation scores.
-- Receive explanations describing why each recommendation was generated.
-
-Future versions of the application may include:
-
-- Book cover images
-- Search functionality
-- Filtering by author or publisher
-- Explainable AI features
-- Improved recommendation visualizations
-
-Deploying the model through Streamlit provides an intuitive interface for users while demonstrating how machine learning models can be integrated into real-world applications.
-
----
-
-# 7. Conclusion
-
-This project successfully developed a book recommendation system using the Book-Crossing dataset and Item-Based Collaborative Filtering with Cosine Similarity.
-
-The project included:
-
-- Data cleaning and preprocessing
-- Exploratory data analysis
-- Feature engineering
-- Construction of a user-item interaction matrix
-- Recommendation model development
-- Explainable recommendation generation
-
-The results demonstrate that collaborative filtering can successfully generate meaningful recommendations using only user rating behavior.
-
-## Limitations
-
-Several limitations remain:
-
-- No genre or textual book information was available.
-- The dataset is highly sparse.
-- Cold-start users and books remain challenging.
-- Recommendations rely entirely on historical ratings.
-
-## Lessons Learned
-
-This project provided practical experience with:
-
-- Data cleaning
-- Exploratory data analysis
-- Feature engineering
-- Recommendation systems
-- Cosine similarity
-- Collaborative filtering
-- Explainable AI concepts
-- Machine learning workflow development
-
-## Future Work
-
-Future improvements include:
-
-- Matrix Factorization using Singular Value Decomposition (SVD)
-- Hybrid recommendation systems
-- Content-based filtering
-- Natural language processing using book descriptions
-- Enhanced evaluation metrics
-- Streamlit deployment
-- Real-time recommendation generation
-
----
-
-# 8. References
-
-Arashnic. (2022). *Book Recommendation Dataset*. Kaggle. https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
-
-Book-Crossing Dataset. (2004). http://www2.informatik.uni-freiburg.de/~cziegler/BX/
-
-Pedregosa, F., et al. (2011). *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research, 12, 2825–2830.
-
-Scikit-learn Documentation. https://scikit-learn.org/
-
-Pandas Documentation. https://pandas.pydata.org/
-
-NumPy Documentation. https://numpy.org/
-
-Plotly Documentation. https://plotly.com/python/
-
-Google Colaboratory Documentation. https://colab.research.google.com/
-
-GitHub Documentation. https://docs.github.com/
