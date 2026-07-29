@@ -24,7 +24,7 @@ https://www.linkedin.com/in/chloe-just-510377124/
 
 **PowerPoint Presentation**
 
-*Insert presentation link here*
+https://docs.google.com/presentation/d/1SfwVZcUDI0_VDJQ_lJzIFp1zLH_lgLNuFD73ie3owRM/edit?usp=sharing
 
 **Presentation Video**
 
