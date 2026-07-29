@@ -268,3 +268,58 @@ To improve transparency and user trust, the recommendation system was designed t
 
 Providing explanations helps users understand why a particular recommendation was generated and represents an important step toward creating more interpretable machine learning systems.
 
+# 7. Conclusion
+
+This project successfully developed a book recommendation system using the Book-Crossing dataset and an Item-Based Collaborative Filtering approach based on Cosine Similarity. The objective of the project was to investigate whether meaningful book recommendations could be generated using only user rating behavior and interaction patterns.
+
+The project followed a complete machine learning workflow, including data cleaning and preprocessing, exploratory data analysis, feature engineering, construction of a user-item interaction matrix, recommendation model development, and generation of explainable recommendations. The final system demonstrated that collaborative filtering techniques can effectively identify similarities between books based on user preferences and generate personalized recommendations without requiring additional metadata such as book genres or descriptions.
+
+The results highlight the effectiveness of similarity-based recommendation methods for uncovering patterns within user-item interactions. By analyzing rating behaviors and calculating similarities between books, the model was able to recommend items that aligned with users' demonstrated preferences. Additionally, incorporating explainable recommendations improved transparency by allowing users to understand why specific books were suggested.
+
+## Limitations
+
+Although the recommendation system produced meaningful results, several limitations affected the overall performance of the model.
+
+First, the dataset did not include additional book-level information such as genres, descriptions, authors, or publication details that could provide further context for recommendations. As a result, the model relied entirely on user rating behavior and could not incorporate content-based features.
+
+Second, the Book-Crossing dataset contains a high degree of sparsity because most users rated only a small subset of available books. Sparse datasets make it more difficult for collaborative filtering algorithms to identify reliable similarity patterns between items.
+
+Another limitation is the cold-start problem. New users without previous rating history and new books without existing ratings cannot be effectively recommended using a collaborative filtering approach alone. Finally, because recommendations are based entirely on historical user interactions, the system may reinforce existing preferences while limiting opportunities for users to discover new categories or authors.
+
+## Lessons Learned
+
+This project provided practical experience developing an end-to-end machine learning application and strengthened understanding of several important concepts within data science and recommendation systems.
+
+Throughout the project, experience was gained in data cleaning, exploratory data analysis, feature engineering, collaborative filtering, cosine similarity calculations, and recommendation system development. Additionally, the project provided exposure to explainable artificial intelligence (XAI) concepts by focusing on generating recommendations that users could understand and interpret.
+
+The project also reinforced the importance of the overall machine learning workflow, including preparing real-world datasets, selecting appropriate algorithms, evaluating model performance, and considering limitations that affect model reliability and usability.
+
+## Future Work
+
+Several improvements could be implemented to further enhance the recommendation system. One potential extension is applying matrix factorization techniques, such as Singular Value Decomposition (SVD), to identify latent relationships between users and books. These approaches may improve recommendation accuracy by capturing hidden patterns within user preferences.
+
+Another opportunity is developing a hybrid recommendation system that combines collaborative filtering with content-based filtering. Incorporating additional information such as book descriptions, author information, or genre classifications could improve recommendations, particularly for new users and books.
+
+Future work could also explore natural language processing (NLP) techniques to analyze textual book information and extract meaningful features from descriptions or reviews. Additional evaluation metrics, real-time recommendation generation, and deployment through an interactive application such as Streamlit would further improve the usability and practical application of the system.
+
+---
+
+# 8. References
+
+Arashnic. (2022). *Book Recommendation Dataset*. Kaggle. https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
+
+Book-Crossing Dataset. (2004). *Book-Crossing Dataset*. University of Freiburg. http://www2.informatik.uni-freiburg.de/~cziegler/BX/
+
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
+
+Scikit-learn Developers. (n.d.). *Scikit-learn documentation*. https://scikit-learn.org/
+
+The pandas development team. (n.d.). *pandas documentation*. https://pandas.pydata.org/
+
+NumPy Developers. (n.d.). *NumPy documentation*. https://numpy.org/
+
+Plotly Technologies Inc. (n.d.). *Plotly Python documentation*. https://plotly.com/python/
+
+Google. (n.d.). *Google Colaboratory documentation*. https://colab.research.google.com/
+
+GitHub. (n.d.). *GitHub documentation*. https://docs.github.com/
