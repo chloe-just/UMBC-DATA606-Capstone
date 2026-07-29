@@ -1,13 +1,6 @@
-# The Template and Guideline for the Final Report
-
-- This document serves as a guide for developing project proposal which will eventually become the proposal and final report.
-- You start with the end in mind and adopt an agile approach:
-  - Making progress continuously towards your goal.
-  - Updating this document continuously along the way.
- 
 ## 1. Title and Author
 
-- Project Title: A Personalized Book Recommendation System Using Machine Learning and NLP
+- Project Title: A Personalized Book Recommendation System Using Machine Learning and Streamlit
 - Prepared for UMBC Data Science Master Degree Capstone by Dr Chaojie (Jay) Wang
 - Author: Chloe Just 
 - GitHub: https://github.com/chloe-just/UMBC-DATA606-Capstone/tree/main
