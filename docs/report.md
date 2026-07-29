@@ -30,6 +30,10 @@ https://www.linkedin.com/in/chloe-just-510377124/
 
 *Insert YouTube link here*
 
+**Streamlit Application**
+
+https://umbc-data606-capstone-ehgadptcnnxwbmdyaafbbr.streamlit.app/
+
 # Abstract
 
 Recommendation systems have become an essential component of modern digital platforms by helping users discover products and content that align with their interests. This project developed a personalized book recommendation system using the Book Recommendation Dataset obtained from Kaggle. The dataset contains over one million user-book interactions, including book metadata, user demographics, and explicit rating information. Exploratory data analysis was performed to understand the structure and quality of the data, identify missing values, and engineer features suitable for recommendation modeling. After preprocessing, an Item-Based Collaborative Filtering model using Cosine Similarity was implemented to generate personalized book recommendations based on historical user ratings. A user-item interaction matrix was constructed to represent explicit user preferences, and similarity scores between books were calculated to recommend titles with comparable rating patterns. The recommendation engine was designed for deployment as a Streamlit web application, allowing users to interactively receive personalized recommendations. This project demonstrates how collaborative filtering techniques can effectively leverage historical rating behavior to build scalable recommendation systems while highlighting challenges such as sparse data and cold-start problems.
