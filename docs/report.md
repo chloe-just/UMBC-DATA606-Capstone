@@ -64,7 +64,7 @@ This project was guided by the following research questions:
 
 5. How can collaborative filtering be incorporated into an interactive web application that generates personalized book recommendations for users?
 
-# 5. Data
+# Data
 
 ## Data Source
 
@@ -171,7 +171,7 @@ Several recommendation approaches were considered during project planning, inclu
 
 The resulting recommendation engine generates personalized book suggestions by identifying books with similar rating patterns while excluding books that a user has already rated.
 
-# 6. Model Development
+# Model Development
 
 ## Recommendation Model
 
@@ -284,7 +284,7 @@ To improve transparency and user trust, the recommendation system was designed t
 
 Providing explanations helps users understand why a particular recommendation was generated and represents an important step toward creating more interpretable machine learning systems.
 
-# 7. Conclusion
+# Conclusion
 
 This project successfully developed a book recommendation system using the Book-Crossing dataset and an Item-Based Collaborative Filtering approach based on Cosine Similarity. The objective of the project was to investigate whether meaningful book recommendations could be generated using only user rating behavior and interaction patterns.
 
@@ -320,7 +320,7 @@ Future work could also explore natural language processing (NLP) techniques to a
 
 ---
 
-# 8. References
+# References
 
 Arashnic. (2022). *Book Recommendation Dataset*. Kaggle. https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
