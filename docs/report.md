@@ -28,7 +28,7 @@ https://docs.google.com/presentation/d/1SfwVZcUDI0_VDJQ_lJzIFp1zLH_lgLNuFD73ie3o
 
 **Presentation Video**
 
-*Insert YouTube link here*
+https://www.youtube.com/watch?v=5Jp4JHIvFOI
 
 **Streamlit Application**
 
